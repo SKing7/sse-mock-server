@@ -1,103 +1,243 @@
-import Image from "next/image";
+"use client"
 
-export default function Home() {
+import { useState } from "react"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Input } from "@/components/ui/input"
+import { Label } from "@/components/ui/label"
+import { Textarea } from "@/components/ui/textarea"
+import { Badge } from "@/components/ui/badge"
+import { Separator } from "@/components/ui/separator"
+import { Play, Square, Server, Download } from "lucide-react"
+
+export default function Component() {
+  const [url, setUrl] = useState("https://web-dev.wenxiaobai.com/")
+  const [isMonitoring, setIsMonitoring] = useState(false)
+  const [isMockServerRunning, setIsMockServerRunning] = useState(false)
+  const [sseRequests, setSseRequests] = useState([])
+  const [logs, setLogs] = useState("")
+
+  const startMonitoring = async () => {
+    setIsMonitoring(true)
+    setLogs("开始监听SSE请求...\n")
+
+    try {
+      const response = await fetch("/api/monitor", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ url, action: "start" }),
+      })
+
+      const data = await response.json()
+      setLogs((prev) => prev + `监听已启动: ${data.message}\n`)
+    } catch (error) {
+      setLogs((prev) => prev + `错误: ${error.message}\n`)
+      setIsMonitoring(false)
+    }
+  }
+
+  const stopMonitoring = async () => {
+    try {
+      const response = await fetch("/api/monitor", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ action: "stop" }),
+      })
+
+      const data = await response.json()
+      setSseRequests(data.sseRequests || [])
+      setLogs((prev) => prev + `监听已停止，捕获到 ${data.sseRequests?.length || 0} 个SSE请求\n`)
+    } catch (error) {
+      setLogs((prev) => prev + `错误: ${error.message}\n`)
+    }
+
+    setIsMonitoring(false)
+  }
+
+  const startMockServer = async () => {
+    try {
+      const response = await fetch("/api/mock-server", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ action: "start" }),
+      })
+
+      const data = await response.json()
+      setIsMockServerRunning(true)
+      setLogs((prev) => prev + `Mock服务器已启动: ${data.message}\n`)
+    } catch (error) {
+      setLogs((prev) => prev + `错误: ${error.message}\n`)
+    }
+  }
+
+  const stopMockServer = async () => {
+    try {
+      const response = await fetch("/api/mock-server", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ action: "stop" }),
+      })
+
+      setIsMockServerRunning(false)
+      setLogs((prev) => prev + "Mock服务器已停止\n")
+    } catch (error) {
+      setLogs((prev) => prev + `错误: ${error.message}\n`)
+    }
+  }
+
+  const downloadMockData = () => {
+    const dataStr = JSON.stringify(sseRequests, null, 2)
+    const dataBlob = new Blob([dataStr], { type: "application/json" })
+    const url = URL.createObjectURL(dataBlob)
+    const link = document.createElement("a")
+    link.href = url
+    link.download = "sse-mock-data.json"
+    link.click()
+    URL.revokeObjectURL(url)
+  }
+
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className="container mx-auto p-6 max-w-6xl">
+      <div className="mb-8">
+        <h1 className="text-3xl font-bold mb-2">SSE 监听器 & Mock 服务器</h1>
+        <p className="text-muted-foreground">监听网页中的Server-Sent Events请求，保存数据并创建Mock服务器</p>
+      </div>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+      <div className="grid gap-6 lg:grid-cols-2">
+        {/* 监听控制面板 */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Play className="w-5 h-5" />
+              SSE 监听器
+            </CardTitle>
+            <CardDescription>启动Chrome实例监听指定页面的SSE请求</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="space-y-2">
+              <Label htmlFor="url">目标URL</Label>
+              <Input
+                id="url"
+                value={url}
+                onChange={(e) => setUrl(e.target.value)}
+                placeholder="https://example.com"
+                disabled={isMonitoring}
+              />
+            </div>
+
+            <div className="flex gap-2">
+              {!isMonitoring ? (
+                <Button onClick={startMonitoring} className="flex-1">
+                  <Play className="w-4 h-4 mr-2" />
+                  开始监听
+                </Button>
+              ) : (
+                <Button onClick={stopMonitoring} variant="destructive" className="flex-1">
+                  <Square className="w-4 h-4 mr-2" />
+                  停止监听
+                </Button>
+              )}
+            </div>
+
+            {isMonitoring && (
+              <Badge variant="secondary" className="w-full justify-center">
+                正在监听中...
+              </Badge>
+            )}
+          </CardContent>
+        </Card>
+
+        {/* Mock服务器控制面板 */}
+        <Card>
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <Server className="w-5 h-5" />
+              Mock 服务器
+            </CardTitle>
+            <CardDescription>使用捕获的数据启动SSE Mock服务器</CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="text-sm text-muted-foreground">
+              捕获到的SSE请求: <Badge variant="outline">{sseRequests.length}</Badge>
+            </div>
+
+            <div className="flex gap-2">
+              {!isMockServerRunning ? (
+                <Button onClick={startMockServer} className="flex-1" disabled={sseRequests.length === 0}>
+                  <Server className="w-4 h-4 mr-2" />
+                  启动Mock服务器
+                </Button>
+              ) : (
+                <Button onClick={stopMockServer} variant="destructive" className="flex-1">
+                  <Square className="w-4 h-4 mr-2" />
+                  停止Mock服务器
+                </Button>
+              )}
+
+              <Button onClick={downloadMockData} variant="outline" disabled={sseRequests.length === 0}>
+                <Download className="w-4 h-4" />
+              </Button>
+            </div>
+
+            {isMockServerRunning && (
+              <Badge variant="secondary" className="w-full justify-center">
+                Mock服务器运行中 - http://localhost:3001
+              </Badge>
+            )}
+          </CardContent>
+        </Card>
+      </div>
+
+      {/* SSE请求列表 */}
+      {sseRequests.length > 0 && (
+        <Card className="mt-6">
+          <CardHeader>
+            <CardTitle>捕获的SSE请求</CardTitle>
+            <CardDescription>显示所有监听到的Server-Sent Events请求</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="space-y-4">
+              {sseRequests.map((request, index) => (
+                <div key={index} className="border rounded-lg p-4">
+                  <div className="flex items-center justify-between mb-2">
+                    <Badge variant="outline">{request.method}</Badge>
+                    <span className="text-sm text-muted-foreground">
+                      {new Date(request.timestamp).toLocaleString()}
+                    </span>
+                  </div>
+                  <div className="text-sm font-mono mb-2">{request.url}</div>
+                  <div className="text-xs text-muted-foreground mb-2">事件数量: {request.events?.length || 0}</div>
+                  {request.events?.slice(0, 3).map((event, eventIndex) => (
+                    <div key={eventIndex} className="bg-muted p-2 rounded text-xs font-mono mb-1">
+                      {event.data}
+                    </div>
+                  ))}
+                  {request.events?.length > 3 && (
+                    <div className="text-xs text-muted-foreground">... 还有 {request.events.length - 3} 个事件</div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </CardContent>
+        </Card>
+      )}
+
+      <Separator className="my-6" />
+
+      {/* 日志面板 */}
+      <Card>
+        <CardHeader>
+          <CardTitle>运行日志</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <Textarea
+            value={logs}
+            readOnly
+            className="min-h-[200px] font-mono text-sm"
+            placeholder="日志将在这里显示..."
           />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+        </CardContent>
+      </Card>
     </div>
-  );
+  )
 }
