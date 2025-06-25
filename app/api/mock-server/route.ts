@@ -6,7 +6,7 @@ import path from "path"
 let mockServer = null
 
 export async function POST(request: NextRequest) {
-  const { action } = await request.json()
+  const { action, presetData } = await request.json()
 
   try {
     if (action === "start") {
@@ -17,15 +17,23 @@ export async function POST(request: NextRequest) {
         })
       }
 
+      const mockFile = presetData?.mockFile || "sse-mock-data.json"
       // 读取SSE数据
-      const mockDataPath = path.join(process.cwd(), "sse-mock-data.json")
+      // 安全性检查：确保 mockFile 是一个有效且安全的文件名，防止路径遍历攻击。
+      if (!mockFile || typeof mockFile !== 'string' || mockFile.includes('..') || mockFile.includes('/') || mockFile.includes('\\')) {
+        return NextResponse.json({
+          message: `请求的文件名无效或包含非法路径字符: "${mockFile}"`,
+          success: false,
+        }, { status: 400 })
+      }
+      const mockDataPath = path.join(process.cwd(), 'preset-data', mockFile)
       let sseData = []
 
       try {
         const data = await fs.readFile(mockDataPath, "utf-8")
         sseData = JSON.parse(data)
       } catch (error) {
-        console.log("未找到mock数据文件，使用空数据")
+        console.log("未找到mock数据文件，使用空数据", error)
       }
 
       // 创建Mock服务器
@@ -33,7 +41,8 @@ export async function POST(request: NextRequest) {
         // 设置CORS头
         res.setHeader("Access-Control-Allow-Origin", "*")
         res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
-        res.setHeader("Access-Control-Allow-Headers", "Content-Type")
+        res.setHeader("Access-Control-Allow-Headers", "*")
+        console.log("收到请求", req.method)
 
         if (req.method === "OPTIONS") {
           res.writeHead(200)
@@ -42,37 +51,37 @@ export async function POST(request: NextRequest) {
         }
 
         // 根据URL路径匹配对应的SSE数据
-        const matchedRequest = sseData.find((item) => req.url && item.url.includes(req.url.split("?")[0]))
+        const matchedRequest = sseData;
 
-        if (matchedRequest && req.url.includes("/sse")) {
+        if (matchedRequest) {
           // 返回SSE响应
+          console.log("开始响应数据", matchedRequest.length, "条事件数据")
           res.writeHead(200, {
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+            "Access-Control-Allow-Headers": "Content-Type",
             "Content-Type": "text/event-stream",
             "Cache-Control": "no-cache",
             Connection: "keep-alive",
-            "Access-Control-Allow-Origin": "*",
           })
 
           // 发送事件数据
-          if (matchedRequest.events) {
+          if (matchedRequest.length) {
             let eventIndex = 0
+            let baseTime = matchedRequest[0].timestamp;
             const sendEvent = () => {
-              if (eventIndex < matchedRequest.events.length) {
-                const event = matchedRequest.events[eventIndex]
+              if (eventIndex < matchedRequest.length) {
+                const event = matchedRequest[eventIndex]
 
-                if (event.event) {
-                  res.write(`event: ${event.event}\n`)
-                }
-                if (event.id) {
-                  res.write(`id: ${event.id}\n`)
-                }
-                if (event.data) {
-                  res.write(`data: ${event.data}\n`)
-                }
-                res.write("\n")
+                res.write(event.value)
+                console.log(`发送事件: ${eventIndex + 1}/${matchedRequest.length}`, event.value)
 
                 eventIndex++
-                setTimeout(sendEvent, 1000) // 每秒发送一个事件
+                setTimeout(sendEvent, event.timestamp - baseTime)
+                baseTime = event.timestamp; // 更新基准时间
+              } else {
+                res.end() // 结束连接
+                console.log("所有事件已发送")
               }
             }
             sendEvent()
