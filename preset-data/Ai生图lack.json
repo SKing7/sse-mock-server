@@ -1,0 +1,50 @@
+[
+  {
+    "timestamp": "1753338054948",
+    "value": "event:opened\ndata:{\"answerSentenceId\":\"38529c3a-fb49-4c8a-8fea-2f5dc5aba8d2\",\"conversationId\":\"5d4372dd-17b2-4315-af8a-b74462464001\",\"sseId\":\"e01a874a-4307-4e35-b640-28c16ba6f6cc\",\"queryTime\":\"2025-07-24T14:20:55.100241904\",\"querySentenceId\":\"2c283de9-a56d-4ef4-a278-4380033b217e\",\"timestamp\":\"1753338055104\",\"turnId\":\"d11feb9d-7ff6-4ffa-bcda-0674e00d8a90\",\"eventIndex\":0}\n\n"
+  },
+  {
+    "timestamp": "1753338057824",
+    "value": "event:ping\n\n"
+  },
+  {
+    "timestamp": "1753338059582",
+    "value": "event:loading\ndata:{\"sub_type\":\"loading\",\"image_resolution\":\"1024x1024\",\"eventIndex\":1,\"type\":\"ClientEvent\",\"content\":\"正在生成中，请稍候\"}\n\n"
+  },
+  {
+    "timestamp": "1753338060822",
+    "value": "event:ping\n\n"
+  },
+  {
+    "timestamp": "1753338063922",
+    "value": "event:ping\n\n"
+  },
+  {
+    "timestamp": "1753338066822",
+    "value": "event:ping\n\n"
+  },
+  {
+    "timestamp": "1753338069822",
+    "value": "event:ping\n\n"
+  },
+  {
+    "timestamp": "1753338072829",
+    "value": "event:ping\n\n"
+  },
+  {
+    "timestamp": "1753338074582",
+    "value": "event:loading\ndata:{\"sub_type\":\"loading\",\"eventIndex\":2,\"type\":\"ClientEvent\",\"content\":\"当前生成人数较多，请耐心等待\"}\n\n"
+  },
+  {
+    "timestamp": "1753338074582",
+    "value": "event:message\ndata:{\"sseId\":\"82655f34-459b-4cab-bf47-3c6836170cca\",\"eventIndex\":358,\"content2\":\"```ys_imgs\",\"timestamp\":\"1753518603220\",\"coin\":{\"realBotId\":300001,\"status\":1,\"cost\":3}}\n\nevent:generateEnd\n\n"
+  },
+  {
+    "timestamp": "1753338074582",
+    "value": "event:generateEnd\ndata:{\"sseId\":\"82655f34-459b-4cab-bf47-3c6836170cca\",\"timestamp\":1753518603220,\"eventIndex\":359}\n\n"
+  },
+  {
+    "timestamp": "1753338074582",
+    "value": "event:close\ndata:{\"code\":0,\"answerTime\":\"2025-07-26T16:30:04.220350820\",\"sessionId\":\"82655f34-459b-4cab-bf47-3c6836170cca\",\"eventIndex\":360}\n\n"
+  }
+]

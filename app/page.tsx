@@ -21,7 +21,6 @@ export default function Component() {
   const [sseRequests, setSseRequests] = useState([]);
   const [logs, setLogs] = useState("");
   const [presetDatas, setPresetDatas] = useState({ files: [] });
-  const [selectedPreset, setSelectedPreset] = useState("");
 
   useEffect(() => {
     const fetchPresetData = async () => {
@@ -76,16 +75,22 @@ export default function Component() {
     setIsMonitoring(false);
   };
 
-  const startMockServer = async () => {
+  const startMockServer = async (params) => {
+    if (!params.conversationId) {
+      alert("请提供ConversationId");
+      return;
+    }
+    if (!params.presetData) {
+      alert("请先选择一个预设数据文件");
+      return;
+    }
     try {
       const response = await fetch("/api/mock-server", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           action: "start",
-          presetData: {
-            mockFile: selectedPreset,
-          },
+          params,
         }),
       });
 
@@ -113,9 +118,6 @@ export default function Component() {
   };
 
 
-  const handleSelectPreset = (value) => {
-    setSelectedPreset(value);
-  };
 
   return (
     <div className="container mx-auto p-6 max-w-6xl">
@@ -137,10 +139,8 @@ export default function Component() {
         />
         {/* Mock服务器控制面板 */}
         <Mockserver
-          sseRequests={sseRequests}
           isMockServerRunning={isMockServerRunning}
           presetDatas={presetDatas}
-          onSelectPreset={handleSelectPreset}
           onStartMockServer={startMockServer}
           onStopMockServer={stopMockServer}
         />

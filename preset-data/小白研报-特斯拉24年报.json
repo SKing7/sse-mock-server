@@ -1,7 +1,7 @@
 [
   {
     "timestamp": "1750748907671",
-    "value": "event:opened\ndata:{\"turnId\":\"d7f78126-dd08-4db8-8a20-ebc567eb34df\",\"eventIndex\":0,\"answerSentenceId\":\"920028c2-725b-47b4-a440-01d7ed6baded\",\"conversationId\":\"38013190-f0c6-4565-bcba-bf73e364a72a\",\"sseId\":\"8f3fcecd-6d18-477f-8944-047edef4f6d9\",\"queryTime\":\"2025-06-24T15:08:27.522989476\",\"querySentenceId\":\"fd278ef9-6198-40a3-9c26-235943b97e65\",\"timestamp\":\"1750748907523\"}\n\n"
+    "value": "event:opened\ndata:{\"turnId\":\"d7f78126-dd08-4db8-8a20-ebc567eb34df\",\"eventIndex\":0,\"answerSentenceId\":\"920028c2-725b-47b4-a440-01d7ed6baded\",\"conversationId\":\"bcf8f657-50e1-40c5-a80d-ab8036a5f76b\",\"sseId\":\"8f3fcecd-6d18-477f-8944-047edef4f6d9\",\"queryTime\":\"2025-06-24T15:08:27.522989476\",\"querySentenceId\":\"fd278ef9-6198-40a3-9c26-235943b97e65\",\"timestamp\":\"1750748907523\"}\n\n"
   },
   {
     "timestamp": "1750748915548",

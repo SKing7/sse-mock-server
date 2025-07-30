@@ -1,0 +1,91 @@
+
+[
+  {
+    "timestamp": "1750851439408",
+    "value": "event:opened\ndata:{\"turnId\":\"3bf5f983-baaf-41ee-b7e9-571bdf412596\",\"timestamp\":\"1750851439297\",\"querySentenceId\":\"745c7168-f353-47c1-a219-6f65db1c5c9d\",\"queryTime\":\"2025-06-25T19:37:19.293629918\",\"sseId\":\"5bb2d5ee-4439-40ee-a8d5-391695fb4502\",\"conversationId\":\"3d177d95-5c24-4c57-9354-fc14f68377a3\",\"answerSentenceId\":\"316ee8ec-1a2b-4a6c-af91-740962dc315f\",\"eventIndex\":0}\n\n"
+  },
+  {
+    "timestamp": "1750851440092",
+    "value": "event:agentThinking\ndata:{\"stage\":\"thinking\",\"sseId\":\"f08b87eb-9c7a-4d22-ac35-041711ba060b\",\"eventIndex\":1,\"title\":\"\",\"content\":\"我计划整理唐太宗李世民的历史时间线，需涵盖其早年崛起、玄武门之变、治国成就及去世等关键阶段。当前信息尚不完整，需进一步补充。我将搜索相关内容，以获取关于李世民生平及重要历史事件的全面资料，并按时间顺序组织成清晰的时间线。\",\"timestamp\":\"1752311220542\"}\n\n"
+  },
+  {
+    "timestamp": "1750851440092",
+    "value": "event:agentThinking\ndata:{\"stage\":\"toolUse\",\"sseId\":\"f9b87eb-9c7a-4d22-ac35-041711ba060b\",\"eventIndex\":2,\"title\":\"我正在搜索网页\",\"icon\": \"search_web\",\"content\":{\"query\":[\"李世民 唐太宗 重要历史事件 时间线\"]},\"toolName\":\"search_web\",\"timestamp\":\"1752311220548\"}\n\n"
+  },
+  {
+    "timestamp": "1750851440092",
+    "value": "event:agentThinking\ndata:{\"stage\":\"toolUse\",\"sseId\":\"f08b87eb-9c7a-4d22-ac35-041711ba060b\",\"eventIndex\":5,\"title\":\"我正在阅读网页\",\"content\":{\"result\":{\"title\":\"为您检索到1篇内容\",\"details\":[{\"id\":\"1560254a-5b50-4ca4-888e-8f39df00ab7d\",\"index\":\"1\",\"title\":\"唐太宗李世民的一生事迹简介，李世民的故事_唐朝历史 - 古宫历 …\",\"url\":\"https://www.gugong.net/zhongguo/tangchao/6243.html\",\"hostLogo\":\"https://wy-static.wenxiaobai.com/website/icon/14321340826839966887.ico\",\"hostName\":\"古宫历史网\",\"summary\":\"2017年9月20日 · 唐太宗 李世民 （ 公元 598年1月28日－公元649年7月10日），祖籍陇西成纪，是唐高祖李渊和窦皇后的次子， 唐朝 第二位皇帝。 武德九年（公元626年），李世民发动玄武 …\",\"type\":null,\"cTime\":null,\"pdfHtmlUrl\":\"\",\"pdfPublishInfo\":\"\",\"pdfPublishYear\":\"\",\"pdfCitedCount\":0,\"ctime\":null}],\"totalCount\":1,\"source\":null,\"sourceIcon\":null,\"sourceKey\":null}},\"toolName\":\"read_webpage\",\"timestamp\":\"1752311225940\"}\n\n"
+  },
+  {
+    "timestamp": "1750851440092",
+    "value": "event:agentThinking\ndata:{\"stage\":\"toolUse\",\"sseId\":\"f08b87eb-9c7a-4d22-ac35-041711ba060b\",\"eventIndex\":2,\"title\":\"我正在生成图片\",\"content\":{\"prompt\":\"xxxxx\",\"caption\":\"xxxx\",\"size\":\"1080*720\"},\"toolName\":\"text_to_image\",\"timestamp\":\"1752311220548\"}\n\n"
+  },
+  {
+    "timestamp": "1750851440092",
+    "value": "event:agentThinking\ndata:{\"stage\":\"agentThinkingCompleted\",\"sseId\":\"cce062ee-08e2-4263-8cba-69bd5e6672d0\",\"eventIndex\":18,\"title\":\"思考用时1分59秒\",\"content\":{},\"timestamp\":\"1752311946080\"}\n\n"
+  },
+  {
+    "timestamp": "1750851440092",
+    "value": "event:message\ndata:{\"sseId\":\"5bb2d5ee-4439-40ee-a8d5-391695fb4502\",\"eventIndex\":2,\"content\":\"学习\",\"timestamp\":\"1750851440143\"}\n\n"
+  },
+  {
+    "timestamp": "1750851440236",
+    "value": "event:message\ndata:{\"sseId\":\"5bb2d5ee-4439-40ee-a8d5-391695fb4502\",\"eventIndex\":3,\"content\":\"是一项\",\"timestamp\":\"1750851440306\"}\n\nevent:message\ndata:{\"sseId\":\"5bb2d5ee-4439-40ee-a8d5-391695fb4502\",\"eventIndex\":4,\"content\":\"需要\",\"timestamp\":\"1750851440307\"}\n\nevent:message\ndata:{\"sseId\":\"5bb2d5ee-4439-40ee-a8d5-391695fb4502\",\"eventIndex\":5,\"content\":\"方法\",\"timestamp\":\"1750851440308\"}\n\n"
+  },
+  {
+    "timestamp": "1750851440456",
+    "value": "event:message\ndata:{\"sseId\":\"5bb2d5ee-4439-40ee-a8d5-391695fb4502\",\"eventIndex\":6,\"content\":\"、\",\"timestamp\":\"1750851440531\"}\n\nevent:message\ndata:{\"sseId\":\"5bb2d5ee-4439-40ee-a8d5-391695fb4502\",\"eventIndex\":7,\"content\":\"耐心\",\"timestamp\":\"1750851440531\"}\n\nevent:message\ndata:{\"sseId\":\"5bb2d5ee-4439-40ee-a8d5-391695fb4502\",\"eventIndex\":8,\"content\":\"和\",\"timestamp\":\"1750851440532\"}\n\nevent:message\ndata:{\"sseId\":\"5bb2d5ee-4439-40ee-a8d5-391695fb4502\",\"eventIndex\":9,\"content\":\"持续\",\"timestamp\":\"1750851440533\"}\n\n"
+  },
+  {
+    "timestamp": "1750851440589",
+    "value": "event:message\ndata:{\"sseId\":\"5bb2d5ee-4439-40ee-a8d5-391695fb4502\",\"eventIndex\":10,\"content\":\"努力的\",\"timestamp\":\"1750851440661\"}\n\nevent:message\ndata:{\"sseId\":\"5bb2d5ee-4439-40ee-a8d5-391695fb4502\",\"eventIndex\":11,\"content\":\"长期\",\"timestamp\":\"1750851440662\"}\n\nevent:message\ndata:{\"sseId\":\"5bb2d5ee-4439-40ee-a8d5-391695fb4502\",\"eventIndex\":12,\"content\":\"过程\",\"timestamp\":\"1750851440663\"}\n\nevent:message\ndata:{\"sseId\":\"5bb2d5ee-4439-40ee-a8d5-391695fb4502\",\"eventIndex\":13,\"content\":\"。\",\"timestamp\":\"1750851440663\"}\n\n"
+  },
+  {
+    "timestamp": "1750851440748",
+    "value": "event:message\ndata:{\"sseId\":\"5bb2d5ee-4439-40ee-a8d5-391695fb4502\",\"eventIndex\":14,\"content\":\"以下\",\"timestamp\":\"1750851440823\"}\n\n"
+  },
+  {
+    "timestamp": "1750851440768",
+    "value": "event:message\ndata:{\"sseId\":\"5bb2d5ee-4439-40ee-a8d5-391695fb4502\",\"eventIndex\":15,\"content\":\"是一个\",\"timestamp\":\"1750851440824\"}\n\nevent:message\ndata:{\"sseId\":\"5bb2d5ee-4439-40ee-a8d5-391695fb4502\",\"eventIndex\":16,\"content\":\"系统\",\"timestamp\":\"1750851440825\"}\n\nevent:message\ndata:{\"sseId\":\"5bb2d5ee-4439-40ee-a8d5-391695fb4502\",\"eventIndex\":17,\"content\":\"化的\",\"timestamp\":\"1750851440826\"}\n\n"
+  },
+  {
+    "timestamp": "1750851440954",
+    "value": "event:message\ndata:{\"sseId\":\"5bb2d5ee-4439-40ee-a8d5-391695fb4502\",\"eventIndex\":18,\"content\":\"学习\",\"timestamp\":\"1750851441029\"}\n\nevent:message\ndata:{\"sseId\":\"5bb2d5ee-4439-40ee-a8d5-391695fb4502\",\"eventIndex\":19,\"content\":\"框架\",\"timestamp\":\"1750851441030\"}\n\n"
+  },
+  {
+    "timestamp": "1750851440969",
+    "value": "event:message\ndata:{\"sseId\":\"5bb2d5ee-4439-40ee-a8d5-391695fb4502\",\"eventIndex\":20,\"content\":\"，\",\"timestamp\":\"1750851441031\"}\n\nevent:message\ndata:{\"sseId\":\"5bb2d5ee-4439-40ee-a8d5-391695fb4502\",\"eventIndex\":21,\"content\":\"帮助你\",\"timestamp\":\"1750851441032\"}\n\n"
+  },
+  {
+    "timestamp": "1750851441113",
+    "value": "event:message\ndata:{\"sseId\":\"5bb2d5ee-4439-40ee-a8d5-391695fb4502\",\"eventIndex\":22,\"content\":\"更\",\"timestamp\":\"1750851441166\"}\n\nevent:message\ndata:{\"sseId\":\"5bb2d5ee-4439-40ee-a8d5-391695fb4502\",\"eventIndex\":23,\"content\":\"高效\",\"timestamp\":\"1750851441167\"}\n\nevent:message\ndata:{\"sseId\":\"5bb2d5ee-4439-40ee-a8d5-391695fb4502\",\"eventIndex\":24,\"content\":\"地\",\"timestamp\":\"1750851441168\"}\n\nevent:message\ndata:{\"sseId\":\"5bb2d5ee-4439-40ee-a8d5-391695fb4502\",\"eventIndex\":25,\"content\":\"掌握\",\"timestamp\":\"1750851441168\"}\n\n"
+  },
+  {
+    "timestamp": "1750851441245",
+    "value": "event:message\ndata:{\"sseId\":\"5bb2d5ee-4439-40ee-a8d5-391695fb4502\",\"eventIndex\":26,\"content\":\"知识\",\"timestamp\":\"1750851441319\"}\n\n"
+  },
+  {
+    "timestamp": "1750851441258",
+    "value": "event:message\ndata:{\"sseId\":\"5bb2d5ee-4439-40ee-a8d5-391695fb4502\",\"eventIndex\":27,\"content\":\"或\",\"timestamp\":\"1750851441320\"}\n\nevent:message\ndata:{\"sseId\":\"5bb2d5ee-4439-40ee-a8d5-391695fb4502\",\"eventIndex\":28,\"content\":\"技能\",\"timestamp\":\"1750851441321\"}\n\nevent:message\ndata:{\"sseId\":\"5bb2d5ee-4439-40ee-a8d5-391695fb4502\",\"eventIndex\":29,\"content\":\"：\n\n\",\"timestamp\":\"1750851441322\"}\n\n"
+  },
+  {
+    "timestamp": "1750851441425",
+    "value": "event:message\ndata:{\"sseId\":\"5bb2d5ee-4439-40ee-a8d5-391695fb4502\",\"eventIndex\":30,\"content\":\"---\n\n\",\"timestamp\":\"1750851441501\"}\n\n"
+  },
+  {
+    "timestamp": "1750851441443",
+    "value": "event:message\ndata:{\"sseId\":\"5bb2d5ee-4439-40ee-a8d5-391695fb4502\",\"eventIndex\":31,\"content\":\"###\",\"timestamp\":\"1750851441502\"}\n\nevent:message\ndata:{\"sseId\":\"5bb2d5ee-4439-40ee-a8d5-391695fb4502\",\"eventIndex\":32,\"content\":\" **\",\"timestamp\":\"1750851441503\"}\n\nevent:message\ndata:{\"sseId\":\"5bb2d5ee-4439-40ee-a8d5-391695fb4502\",\"eventIndex\":33,\"content\":\"1\",\"timestamp\":\"1750851441503\"}\n\n"
+  },
+  {
+    "timestamp": "1750851441608",
+    "value": "event:message\ndata:{\"sseId\":\"5bb2d5ee-4439-40ee-a8d5-391695fb4502\",\"eventIndex\":34,\"content\":\".\",\"timestamp\":\"1750851441678\"}\n\nevent:message\ndata:{\"sseId\":\"5bb2d5ee-4439-40ee-a8d5-391695fb4502\",\"eventIndex\":35,\"content\":\" 明确\",\"timestamp\":\"1750851441680\"}\n\nevent:message\ndata:{\"sseId\":\"5bb2d5ee-4439-40ee-a8d5-391695fb4502\",\"eventIndex\":36,\"content\":\"学习\",\"timestamp\":\"1750851441680\"}\n\n"
+  },
+  {
+    "timestamp": "1750851441965",
+    "value": "event:message\ndata:{\"sseId\":\"5bb2d5ee-4439-40ee-a8d5-391695fb4502\",\"eventIndex\":37,\"content\":\"目标\",\"timestamp\":\"1750851441943\"}\n\nevent:message\ndata:{\"sseId\":\"5bb2d5ee-4439-40ee-a8d5-391695fb4502\",\"eventIndex\":38,\"content\":\"**\n\",\"timestamp\":\"1750851441944\"}\n\nevent:message\ndata:{\"sseId\":\"5bb2d5ee-4439-40ee-a8d5-391695fb4502\",\"eventIndex\":39,\"content\":\"-\",\"timestamp\":\"1750851441945\"}\n\nevent:message\ndata:{\"sseId\":\"5bb2d5ee-4439-40ee-a8d5-391695fb4502\",\"eventIndex\":40,\"content\":\" **\",\"timestamp\":\"1750851441946\"}\n\n"
+  },
+  {
+    "timestamp": "1750851442049",
+    "value": "event:message\ndata:{\"sseId\":\"5bb2d5ee-4439-40ee-a8d5-391695fb4502\",\"eventIndex\":41,\"content\":\"设定\",\"timestamp\":\"1750851442123\"}\n\nevent:message\ndata:{\"sseId\":\"5bb2d5ee-4439-40ee-a8d5-391695fb4502\",\"eventIndex\":42,\"content\":\"清晰\",\"timestamp\":\"1750851442124\"}\n\nevent:message\ndata:{\"sseId\":\"5bb2d5ee-4439-40ee-a8d5-391695fb4502\",\"eventIndex\":43,\"content\":\"目标\",\"timestamp\":\"1750851442125\"}\n\nevent:message\ndata:{\"sseId\":\"5bb2d5ee-4439-40ee-a8d5-391695fb4502\",\"eventIndex\":44,\"content\":\"**\",\"timestamp\":\"1750851442126\"}\n\n"
+  }
+]

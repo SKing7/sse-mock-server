@@ -15,26 +15,21 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Input } from "@/components/ui/input";
+import { useState } from "react";
+import { Label } from "@/components/ui/label";
 
 export default function Mockserver({
-  sseRequests,
   isMockServerRunning,
   presetDatas,
-  onSelectPreset,
   onStartMockServer,
   onStopMockServer,
 }) {
 
-  const downloadMockData = () => {
-    const dataStr = JSON.stringify(sseRequests, null, 2);
-    const dataBlob = new Blob([dataStr], { type: "application/json" });
-    const url = URL.createObjectURL(dataBlob);
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = "sse-mock-data.json";
-    link.click();
-    URL.revokeObjectURL(url);
-  };
+  const [conversationId, setConversationId] = useState("");
+  const [selectedPreset, setSelectedPreset] = useState("");
+  const [selectedSpeed, setSelectedSpeed] = useState("1");
+
   return (
     <Card>
       <CardHeader>
@@ -45,11 +40,9 @@ export default function Mockserver({
         <CardDescription>使用捕获的数据启动SSE Mock服务器</CardDescription>
       </CardHeader>
       <CardContent className="space-y-4">
-        <div className="text-sm text-muted-foreground">
-          捕获到的SSE请求: <Badge variant="outline">{sseRequests.length}</Badge>
-        </div>
-        <div className="text-sm text-muted-foreground">
-          <Select onValueChange={onSelectPreset}>
+        <div className="text-sm flex gap-2">
+          <Label className=" w-[100px] text-sm" htmlFor="preset-select">Mock数据源</Label>
+          <Select onValueChange={setSelectedPreset} value={selectedPreset}>
             <SelectTrigger className="w-[180px]">
               <SelectValue placeholder="选择Mock数据" />
             </SelectTrigger>
@@ -64,8 +57,28 @@ export default function Mockserver({
         </div>
 
         <div className="flex gap-2">
+          <Label className="text-sm w-[100px]" htmlFor="conversation-id">ConversationId</Label>
+          <Input id="conversation-id" placeholder="coversationId" value={conversationId} onChange={(e) => setConversationId(e.target.value)} />
+        </div>
+        <div className="flex gap-2">
+          <Label className="text-sm w-[100px]" htmlFor="conversation-id">倍速</Label>
+          <Select onValueChange={setSelectedSpeed} value={selectedSpeed}>
+            <SelectTrigger className="w-[80px]">
+              <SelectValue placeholder="" />
+            </SelectTrigger>
+            <SelectContent>
+              {[0.5, 1, 2, 3, 4, 5, 'fast', 'very fast'].map((preset, index) => (
+                <SelectItem key={index} value={String(preset)}>
+                  {Number(preset) > 0 ? preset + 'x' : preset}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+
+        <div className="flex gap-2">
           {!isMockServerRunning ? (
-            <Button onClick={onStartMockServer} className="flex-1">
+            <Button onClick={() => onStartMockServer({ conversationId, presetData: selectedPreset, speed: selectedSpeed })} className="flex-1">
               <Server className="w-4 h-4 mr-2" />
               启动Mock服务器
             </Button>
@@ -79,15 +92,10 @@ export default function Mockserver({
               停止Mock服务器
             </Button>
           )}
-
-          {/* <Button onClick={downloadMockData} variant="outline">
-            <Download className="w-4 h-4" />
-          </Button> */}
         </div>
-
         {isMockServerRunning && (
           <Badge variant="secondary" className="w-full justify-center">
-            Mock服务器运行中 - http://localhost:3001
+            Mock服务器运行中 - http://localhost:4005
           </Badge>
         )}
       </CardContent>

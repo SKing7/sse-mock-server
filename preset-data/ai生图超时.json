@@ -1,0 +1,74 @@
+[
+  {
+    "timestamp": "1753844699705",
+    "value": "event:opened\ndata:{\"answerSentenceId\":\"b052fc32-2d44-4025-879a-ce79b7fa7085\",\"conversationId\":\"38dc1f11-5daf-4691-b25e-debffe23d315\",\"sseId\":\"cf725aed-e21c-4f9a-9dbd-a6df62715b58\",\"queryTime\":\"2025-07-30T11:04:59.701587805\",\"querySentenceId\":\"82df2b05-80f0-4e8c-9d58-32309f6a6384\",\"timestamp\":\"1753844699705\",\"turnId\":\"08ad65a2-dbc5-45b5-8785-45f294dd3ac8\",\"eventIndex\":0}\n\n"
+  },
+  {
+    "timestamp": "1753844700492",
+    "value": "event:message\ndata:{\"sseId\":\"cf725aed-e21c-4f9a-9dbd-a6df62715b58\",\"eventIndex\":1,\"content\":\"```ys_think\\n\\n<icon>https://wy-static.wenxiaobai.com/bot-capability/dev/%E6%B7%B1%E5%BA%A6%E6%80%9D%E8%80%83.png</icon>\\n\\n<start>思考中...</start>\\n\\n好的\",\"timestamp\":\"1753844700492\"}\n\n"
+  },
+  {
+    "timestamp": "1753844700541",
+    "value": "event:message\ndata:{\"sseId\":\"cf725aed-e21c-4f9a-9dbd-a6df62715b58\",\"eventIndex\":2,\"content\":\"，我现在\",\"timestamp\":\"1753844700541\"}\n\n"
+  },
+  {
+    "timestamp": "1753844700595",
+    "value": "event:message\ndata:{\"sseId\":\"cf725aed-e21c-4f9a-9dbd-a6df62715b58\",\"eventIndex\":3,\"content\":\"需要根据\",\"timestamp\":\"1753844700595\"}\n\n"
+  },
+  {
+    "timestamp": "1753844700653",
+    "value": "event:message\ndata:{\"sseId\":\"cf725aed-e21c-4f9a-9dbd-a6df62715b58\",\"eventIndex\":4,\"content\":\"用户提供的\",\"timestamp\":\"1753844700653\"}\n\n"
+  },
+  {
+    "timestamp": "1753844716844",
+    "value": "event:message\ndata:{\"sseId\":\"cf725aed-e21c-4f9a-9dbd-a6df62715b58\",\"eventIndex\":286,\"content\":\"\\n<end>已深度思考（用时16秒）</end>\\n\\n```\\n\\n\",\"timestamp\":\"1753844716844\"}\n\n"
+  },
+  {
+    "timestamp": "1753844717000",
+    "value": "event:loading\ndata:{\"sub_type\":\"loading\",\"image_resolution\":\"576x1024\",\"eventIndex\":287,\"type\":\"ClientEvent\",\"content\":\"正在生成中，请稍候\"}\n\n"
+  },
+  {
+    "timestamp": "1753844720000",
+    "value": "event:ping\n\n"
+  },
+  {
+    "timestamp": "1753844723000",
+    "value": "event:ping\n\n"
+  },
+  {
+    "timestamp": "1753844726000",
+    "value": "event:ping\n\n"
+  },
+  {
+    "timestamp": "1753844729000",
+    "value": "event:ping\n\n"
+  },
+  {
+    "timestamp": "1753844732000",
+    "value": "event:ping\n\n"
+  },
+  {
+    "timestamp": "1753844733000",
+    "value": "event:loading\ndata:{\"sub_type\":\"loading\",\"eventIndex\":288,\"type\":\"ClientEvent\",\"content\":\"当前生成人数较多，请耐心等待\"}\n\n"
+  },
+  {
+    "timestamp": "1753844734000",
+    "value": "event:ping\n\n"
+  },
+  {
+    "timestamp": "1753844735000",
+    "value": "event:ping\n\n"
+  },
+  {
+    "timestamp": "1753844735713",
+    "value": "event:message\ndata:{\"sseId\":\"cf725aed-e21c-4f9a-9dbd-a6df62715b58\",\"eventIndex\":289,\"content\":\"\\n\\n``` ys_imgs\\n\\nheader count 1\\n\\nwh 768x1344\\n\\ncontent image_url https://wy-static.wenxiaobai.com/chat-text-to-image/41b19b60-38ad-4367-aa52-9c4ebf65f9c8.jpg\\n\\n```\\n\\n\",\"timestamp\":\"1753844735713\",\"coin\":{\"realBotId\":300001,\"status\":2,\"cost\":3},\"coinErrTextConfig\":\"{\\n    \\\"notEnough\\\": {\\n        \\\"title\\\": \\\"金币不足\\\",\\n        \\\"content\\\": \\\"此次生成需要消耗3金币\\\",\\n        \\\"button\\\": \\\"充值 或 邀请免费得金币\\\"\\n    },\\n    \\\"enough\\\": {\\n        \\\"title\\\": \\\"金币充足\\\",\\n        \\\"content\\\": \\\"此次生成需要消耗3金币\\\",\\n        \\\"button\\\": \\\"继续生成\\\"\\n    },\\n    \\\"confirmDeductionFail\\\": {\\n        \\\"title\\\": \\\"生成超时\\\",\\n        \\\"content\\\": \\\"请刷新获取图片\\\",\\n        \\\"button\\\": \\\"刷新\\\"\\n    }\\n}\"}\n\n"
+  },
+  {
+    "timestamp": "1753844735713",
+    "value": "event:generateEnd\ndata:{\"sseId\":\"cf725aed-e21c-4f9a-9dbd-a6df62715b58\",\"timestamp\":1753844735713,\"eventIndex\":290}\n\n"
+  },
+  {
+    "timestamp": "1753844735713",
+    "value": "event:close\ndata:{\"eventIndex\":291,\"sessionId\":\"cf725aed-e21c-4f9a-9dbd-a6df62715b58\",\"answerTime\":\"2025-07-30T11:05:36.713404865\",\"code\":0}\n\n"
+  }
+]

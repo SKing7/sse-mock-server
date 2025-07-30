@@ -1,0 +1,50 @@
+[
+  {
+    "timestamp": "1753497151250",
+    "value": "event:opened\ndata:{\"sseId\":\"546fd676-1beb-442d-abd8-1f4e5321b9fd\",\"conversationId\":\"34b47835-0ba4-46b8-b33d-4cace5a370e6\",\"answerSentenceId\":\"9fcedb8a-3882-4bf2-84a7-0de69d838490\",\"eventIndex\":0,\"turnId\":\"41cc0f2f-4cb6-44b7-98c7-1669995143f1\",\"timestamp\":\"1753497151220\",\"querySentenceId\":\"a95269ea-458d-4320-94e5-2820abe5bf8d\",\"queryTime\":\"2025-07-26T10:32:31.216441999\"}\n\n"
+  },
+  {
+    "timestamp": "1753497154092",
+    "value": "event:ping\n\n"
+  },
+  {
+    "timestamp": "1753497155617",
+    "value": "event:loading\ndata:{\"sub_type\":\"loading\",\"image_resolution\":\"576x1024\",\"eventIndex\":1,\"type\":\"ClientEvent\",\"content\":\"正在生成中，请稍候\"}\n\n"
+  },
+  {
+    "timestamp": "1753497157062",
+    "value": "event:ping\n\n"
+  },
+  {
+    "timestamp": "1753497160083",
+    "value": "event:ping\n\n"
+  },
+  {
+    "timestamp": "1753497163045",
+    "value": "event:ping\n\n"
+  },
+  {
+    "timestamp": "1753497166044",
+    "value": "event:ping\n\n"
+  },
+  {
+    "timestamp": "1753497169146",
+    "value": "event:ping\n\n"
+  },
+  {
+    "timestamp": "1753497170683",
+    "value": "event:loading\ndata:{\"sub_type\":\"loading\",\"eventIndex\":2,\"type\":\"ClientEvent\",\"content\":\"当前生成人数较多，请耐心等待\"}\n\n"
+  },
+  {
+    "timestamp": "1753497172116",
+    "value": "event:ping\n\n"
+  },
+  {
+    "timestamp": "1753497173254",
+    "value": "event:message\ndata:{\"sseId\":\"546fd676-1beb-442d-abd8-1f4e5321b9fd\",\"eventIndex\":3,\"textConfig\":\"{\\n    \\\"notEnough\\\": {\\n        \\\"title\\\": \\\"金币不足\\\",\\n        \\\"content\\\": \\\"此次生成需要消耗$$coinPrice$$金币\\\",\\n        \\\"button\\\": \\\"充值 或 邀请免费得金币\\\"\\n    },\\n    \\\"enough\\\": {\\n        \\\"title\\\": \\\"金币充足\\\",\\n        \\\"content\\\": \\\"此次生成需要消耗$$coinPrice$$金币\\\",\\n        \\\"button\\\": \\\"继续生成\\\"\\n    },\\n    \\\"confirmDeductionFail\\\": {\\n        \\\"title\\\": \\\"生成超时\\\",\\n        \\\"content\\\": \\\"请刷新获取图片\\\",\\n        \\\"button\\\": \\\"刷新\\\"\\n    }\\n}\",\"content\":\"\\n\\n``` ys_imgs\\n\\nheader count 1\\n\\nwh 768x1344\\n\\ncontent image_url https://wy-static.wenxiaobai.com/chat-text-to-image/2a74856c-d172-4a96-ad01-3fa84cb7aa00.jpg\\n\\n```\\n\\n\",\"coin\":{\"realBotId\":100002,\"status\":0,\"cost\":3},\"timestamp\":\"1753497173372\"}\n\nevent:generateEnd\ndata:{\"sseId\":\"546fd676-1beb-442d-abd8-1f4e5321b9fd\",\"timestamp\":1753497173373,\"eventIndex\":4}\n\n"
+  },
+  {
+    "timestamp": "1753497173290",
+    "value": "event:close\ndata:{\"eventIndex\":5,\"code\":0,\"answerTime\":\"2025-07-26T10:32:54.373860589\",\"sessionId\":\"546fd676-1beb-442d-abd8-1f4e5321b9fd\"}\n\n"
+  }
+]
