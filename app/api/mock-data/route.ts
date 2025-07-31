@@ -6,16 +6,15 @@ import path from "path";
 function extractParams(request: NextRequest, body?: any) {
   if (body) {
     // POST 请求
-    const { id, presetData, conversationId, speed = 1 } = body;
-    return { id, presetData, conversationId, speed };
+    const { presetData, conversationId, speed = 1 } = body;
+    return { presetData, conversationId, speed };
   } else {
     // GET 请求
     const { searchParams } = new URL(request.url);
-    const id = searchParams.get("id");
     const presetData = searchParams.get("presetData");
     const conversationId = searchParams.get("conversationId");
     const speed = searchParams.get("speed") || "1";
-    return { id, presetData, conversationId, speed };
+    return { presetData, conversationId, speed };
   }
 }
 
@@ -139,9 +138,11 @@ async function handleRequest(request: NextRequest, body?: any) {
 
     try {
       const foundData = await getMockData(presetData);
+      console.log("foundData:");
       return createSSEStream(foundData, conversationId, speed);
     } catch (error) {
       const status = error.message.includes("未找到id为") ? 404 : 500;
+      console.log("获取mock数据失败:", error);
       return NextResponse.json(
         {
           message: error.message,
@@ -164,8 +165,13 @@ async function handleRequest(request: NextRequest, body?: any) {
 }
 
 export async function POST(request: NextRequest) {
-  const body = await request.json();
-  return handleRequest(request, body);
+  let body;
+  try {
+    body = await request.json();
+  } catch (error) {
+    body = null;
+  }
+  return handleRequest(request, null);
 }
 
 export async function GET(request: NextRequest) {
